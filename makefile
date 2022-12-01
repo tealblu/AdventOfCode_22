@@ -7,7 +7,7 @@ rCalorieCounting:
 clean:
 	rm -f calorieCounting
 
-git:
+git: clean
 	git add .
 	git commit -m "automated commit from makefile"
 	git push

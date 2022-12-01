@@ -44,27 +44,35 @@ int main() {
         }
     }
 
-    // Find elf with the most calories
+    // Get indices of top 3 elves with the most calories
     int maxCalories = 0;
     int maxCaloriesIndex = 0;
+    int secondMaxCalories = 0;
+    int secondMaxCaloriesIndex = 0;
+    int thirdMaxCalories = 0;
+    int thirdMaxCaloriesIndex = 0;
+
     for (int i = 0; i < elves.size(); i++) {
         if (elves[i].totalCalories > maxCalories) {
+            thirdMaxCalories = secondMaxCalories;
+            thirdMaxCaloriesIndex = secondMaxCaloriesIndex;
+            secondMaxCalories = maxCalories;
+            secondMaxCaloriesIndex = maxCaloriesIndex;
             maxCalories = elves[i].totalCalories;
             maxCaloriesIndex = i;
+        } else if (elves[i].totalCalories > secondMaxCalories) {
+            thirdMaxCalories = secondMaxCalories;
+            thirdMaxCaloriesIndex = secondMaxCaloriesIndex;
+            secondMaxCalories = elves[i].totalCalories;
+            secondMaxCaloriesIndex = i;
+        } else if (elves[i].totalCalories > thirdMaxCalories) {
+            thirdMaxCalories = elves[i].totalCalories;
+            thirdMaxCaloriesIndex = i;
         }
     }
 
-    // Print the elf with the most calories
-    cout << "Elf with the most calories: " << maxCaloriesIndex + 1 << endl;
-
-    // Print the elf's bag
-    cout << "Bag: ";
-    for (int i = 0; i < elves[maxCaloriesIndex].bag.size(); i++) {
-        cout << elves[maxCaloriesIndex].bag[i] << " ";
-    }
-
-    // Print the elf's total calories
-    cout << endl << "Total calories: " << maxCalories << endl;
+    // Print the top 3 elves calories combined
+    cout << endl << "The top 3 elves have a combined total of " << maxCalories + secondMaxCalories + thirdMaxCalories << " calories." << endl;
 
     return EXIT_SUCCESS;
 }
