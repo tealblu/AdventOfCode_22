@@ -13,6 +13,7 @@ rRps: rps
 clean:
 	rm -f rps
 	rm -f calorieCounting
+	clear
 
 git: clean
 	git add .
