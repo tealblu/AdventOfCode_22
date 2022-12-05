@@ -1,10 +1,17 @@
 calorieCounting:
 	g++ -o calorieCounting calorieCounting.cpp elf.cpp
 
-rCalorieCounting:
+rCalorieCounting: calorieCounting
 	./calorieCounting < ccinput.txt
 
+rps:
+	g++ -o rps rockPaperScissors.cpp
+
+rRps: rps
+	./rps
+
 clean:
+	rm -f rps
 	rm -f calorieCounting
 
 git: clean
